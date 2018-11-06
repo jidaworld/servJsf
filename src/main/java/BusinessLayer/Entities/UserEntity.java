@@ -6,7 +6,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "UserEntity.findAll", query = "SELECT u FROM UserEntity u"),
         @NamedQuery(name = "UserEntity.findById", query = "SELECT u FROM UserEntity u WHERE u.id = ?1"),
-        @NamedQuery(name = "UserEntity.findByName", query = "SELECT u FROM UserEntity u WHERE u.Name = ?1"),
+        @NamedQuery(name = "UserEntity.findByName", query = "SELECT u FROM UserEntity u WHERE u.Name LIKE ?1"),
         @NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.Email = ?1")})
 @Table(name="Users")
 public class UserEntity {

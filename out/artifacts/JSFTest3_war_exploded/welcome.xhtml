@@ -8,6 +8,15 @@
     <title>JSF 2.0 Hello World</title>
 </h:head>
 <h:body bgcolor="white">
-    <h2>Welcome #{userBean.list.get(0)}</h2>
+    <h2>List of users</h2>
+    <h:dataTable value="#{userBean.list}" var="users">
+        <h:column>
+            <h:link value="#{users.name}" outcome="users">
+            </h:link>
+            <h:link value="#{users.lastName}" outcome="users">
+            </h:link>
+        </h:column>
+    </h:dataTable>
+
 </h:body>
 </html>

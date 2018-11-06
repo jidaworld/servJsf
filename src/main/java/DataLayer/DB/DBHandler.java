@@ -2,6 +2,7 @@ package DataLayer.DB;
 
 import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
+import DataLayer.DB.Util.UserConverter;
 import DataLayer.DTO.UserDTO;
 
 import javax.persistence.EntityManager;
@@ -37,14 +38,14 @@ public class DBHandler implements IDBHandler {
         List<UserEntity> resultQuery = null;
         try{
             TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByName",UserEntity.class);
-            query.setParameter(1, name);
+            query.setParameter(1, "%" + name + "%");
             resultQuery = query.getResultList();
         } catch(Exception e){
             System.out.println("Error getting users");
         } finally {
             em.close();
         }
-        //Omvandla UserEntitylistan till UserViewModel.
-        return null;
+
+        return UserConverter.convertToUserView(resultQuery);
     }
 }
