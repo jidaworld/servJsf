@@ -1,6 +1,5 @@
 package PresentationLayer.Beans;
 
-
 import BusinessLayer.Handlers.UserHandler;
 import BusinessLayer.ViewModels.UserViewModel;
 
