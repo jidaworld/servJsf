@@ -1,0 +1,50 @@
+package DataLayer.DB;
+
+import BusinessLayer.Entities.UserEntity;
+import BusinessLayer.ViewModels.UserViewModel;
+import DataLayer.DTO.UserDTO;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
+public class DBHandler implements IDBHandler {
+
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("TestPU");
+
+    public DBHandler(){
+
+    }
+
+    public void addUser(UserEntity Users) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(Users);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally {
+            em.close();
+        }
+
+    }
+
+    public List<UserViewModel> getUsers(String name){
+        EntityManager em = emf.createEntityManager();
+        List<UserEntity> resultQuery = null;
+        try{
+            TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByName",UserEntity.class);
+            query.setParameter(1, name);
+            resultQuery = query.getResultList();
+        } catch(Exception e){
+            System.out.println("Error getting users");
+        } finally {
+            em.close();
+        }
+        //Omvandla UserEntitylistan till UserViewModel.
+        return null;
+    }
+}

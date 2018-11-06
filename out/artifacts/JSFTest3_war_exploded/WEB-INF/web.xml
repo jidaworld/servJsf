@@ -5,6 +5,10 @@
          version="4.0">
 
     <display-name>JavaServerFaces</display-name>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/META-INF/Persistence.xml</param-value>
+    </context-param>
     <!-- Welcome page -->
     <welcome-file-list>
         <welcome-file>faces/hello.xhtml</welcome-file>
