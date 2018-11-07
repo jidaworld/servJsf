@@ -3,6 +3,7 @@ package PresentationLayer.Beans;
 import BusinessLayer.Handlers.UserHandler;
 import BusinessLayer.ViewModels.UserViewModel;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,7 +16,6 @@ import java.util.List;
 
 @ManagedBean
 @SessionScoped
-@RestController
 public class UserBean implements Serializable {
 
     private String UserName;
@@ -33,9 +33,8 @@ public class UserBean implements Serializable {
     }
 
     public void getUsers(){
-        System.out.println("hello");
-        userHandler = new UserHandler();
-        list = userHandler.getUsers(searchName);
+        //userHandler = new UserHandler();
+        //list = userHandler.getUsers(searchName);
         try {
             FacesContext.getCurrentInstance().getExternalContext().dispatch("/welcome.xhtml");
         } catch (IOException e) {

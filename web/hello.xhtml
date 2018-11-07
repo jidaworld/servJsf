@@ -26,7 +26,7 @@
 
     <h:form>
         Search Name
-        <h:inputText value="#{userBean.searchName}"></h:inputText>
+        <h:inputText name="name" value="#{userBean.searchName}"></h:inputText>
         <h:commandButton value="Search" action="#{userBean.getUsers}"></h:commandButton>
     </h:form>
 </h:body>
