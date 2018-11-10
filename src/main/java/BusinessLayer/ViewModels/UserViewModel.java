@@ -2,31 +2,41 @@ package BusinessLayer.ViewModels;
 
 public class UserViewModel {
 
-    private String UserName;
-    private String Email;
-    private String Name;
-    private String LastName;
+    private String userName;
+    private String email;
+    private String name;
+    private String lastName;
 
-    public UserViewModel(String UserName, String Email, String Name, String LastName){
-        this.UserName = UserName;
-        this.Email = Email;
-        this.Name = Name;
-        this.LastName = LastName;
+    public UserViewModel(String userName, String email, String name, String lastName){
+        this.userName = userName;
+        this.email = email;
+        this.name = name;
+        this.lastName = lastName;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "UserViewModel{" +
+                "userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
