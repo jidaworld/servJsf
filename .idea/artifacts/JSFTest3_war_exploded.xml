@@ -65,6 +65,8 @@
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.23" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="JSFTest3/web/Web2" />
+      <element id="javaee-facet-resources" facet="JSFTest3/web/Web3" />
     </root>
   </artifact>
 </component>

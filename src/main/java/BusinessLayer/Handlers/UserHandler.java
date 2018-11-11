@@ -3,11 +3,8 @@ package BusinessLayer.Handlers;
 import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
 import DataLayer.DB.DBHandler;
-import DataLayer.DTO.UserDTO;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.List;
-
-import java.sql.SQLException;
 
 public class UserHandler {
 

@@ -3,7 +3,6 @@ package DataLayer.DB;
 import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
 import DataLayer.DB.Util.UserConverter;
-import DataLayer.DTO.UserDTO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

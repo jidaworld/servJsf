@@ -1,4 +1,4 @@
-package app;
+package app.ServiceControllers;
 
 import BusinessLayer.Handlers.UserHandler;
 import BusinessLayer.ViewModels.UserViewModel;
@@ -11,20 +11,19 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @RestController
-public class ServiceController {
+public class GetUsersController {
     private UserHandler userHandler;
 
     @RequestMapping(value = "/getusers", method = RequestMethod.POST)
     public GetUserObjResponse getUsers(@Valid @RequestBody GetUsersObj obj){
         userHandler = new UserHandler();
         System.out.println("rest worked");
-        return new GetUserObjResponse(userHandler.getUsers(obj.name));
 
+        return new GetUserObjResponse(userHandler.getUsers(obj.name));
     }
 
     private static class GetUsersObj{
         @JsonProperty
-        @NotEmpty
         private String name;
     }
 
