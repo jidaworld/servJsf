@@ -25,7 +25,6 @@ public class UserDBHandler implements IUserHandler {
             em.getTransaction().begin();
             em.persist(Users);
             em.getTransaction().commit();
-
         }catch(Exception e){
             em.getTransaction().rollback();
         }finally {
@@ -41,12 +40,13 @@ public class UserDBHandler implements IUserHandler {
             TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByName",UserEntity.class);
             query.setParameter(1, "%" + name + "%");
             resultQuery = query.getResultList();
+            return UserConverter.convertToUserView(resultQuery);
         } catch(Exception e){
             System.out.println("Error getting users");
         } finally {
             em.close();
         }
 
-        return UserConverter.convertToUserView(resultQuery);
+        return null;
     }
 }

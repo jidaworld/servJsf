@@ -18,7 +18,7 @@ public class AddUserController {
     @RequestMapping (value = "/adduser", method = RequestMethod.POST)
     public void addUser(@Valid @RequestBody AddUserObj obj){
         userHandler = new UserHandler();
-        System.out.println(obj.toString());
+        userHandler.addUser(obj.username, obj.password, obj.email, obj.name, obj.lastname);
     }
 
     private static class AddUserObj{

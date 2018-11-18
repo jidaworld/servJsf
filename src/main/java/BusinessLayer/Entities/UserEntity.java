@@ -11,9 +11,6 @@ import javax.persistence.*;
 @Table(name="Users")
 public class UserEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int User_ID;
 
     @Column(unique=true, nullable = false)
     private String UserName;
@@ -21,6 +18,7 @@ public class UserEntity {
     @Column(nullable=false)
     private String Password;
 
+    @Id
     @Column(unique=true, nullable = false)
     private String Email;
 
@@ -29,14 +27,6 @@ public class UserEntity {
 
     @Column(nullable=false)
     private String LastName;
-
-    public int getUser_ID() {
-        return User_ID;
-    }
-
-    public void setUser_ID(int user_ID) {
-        User_ID = user_ID;
-    }
 
     public String getUserName() {
         return UserName;
@@ -78,6 +68,14 @@ public class UserEntity {
         LastName = lastName;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                ", UserName='" + UserName + '\'' +
+                ", Password='" + Password + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Name='" + Name + '\'' +
+                ", LastName='" + LastName + '\'' +
+                '}';
+    }
 }

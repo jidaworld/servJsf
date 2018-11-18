@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "FeedMessageEntity.findByEmail", query = "SELECT m FROM FeedMessageEntity m WHERE m.User = ?1")
+    @NamedQuery(name = "FeedMessageEntity.findByEmail", query = "SELECT m FROM FeedMessageEntity m WHERE m.Users.Email = ?1")
 })
 @Table(name = "FeedMessage")
 public class FeedMessageEntity {
@@ -22,8 +22,8 @@ public class FeedMessageEntity {
     private Date Date;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Email")
-    private UserEntity User;
+    @JoinColumn(name = "Email", nullable = false)
+    private UserEntity Users;
 
     @PrePersist
     protected void onCreate(){
@@ -47,10 +47,20 @@ public class FeedMessageEntity {
     }
 
     public UserEntity getAuthor() {
-        return User;
+        return Users;
     }
 
     public void setAuthor(UserEntity user) {
-        User = user;
+        Users = user;
+    }
+
+    @Override
+    public String toString() {
+        return "FeedMessageEntity{" +
+                "Message_ID=" + Message_ID +
+                ", Message='" + Message + '\'' +
+                ", Date=" + Date +
+                ", Users=" + Users.toString() +
+                '}';
     }
 }

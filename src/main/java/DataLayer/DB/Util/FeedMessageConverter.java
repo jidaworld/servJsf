@@ -21,6 +21,8 @@ public class FeedMessageConverter {
                     m.getDate(),
                     m.getAuthor().getName(),
                     m.getAuthor().getLastName()));
+                    //"kasper",
+                    //"linden"));
         }
         return returnList;
     }

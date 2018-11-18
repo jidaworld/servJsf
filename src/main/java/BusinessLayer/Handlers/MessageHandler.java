@@ -2,6 +2,7 @@ package BusinessLayer.Handlers;
 
 import BusinessLayer.Entities.DirectMessageEntity;
 import BusinessLayer.Entities.FeedMessageEntity;
+import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.DirectMessageViewModel;
 import BusinessLayer.ViewModels.FeedMessageViewModel;
 import DataLayer.DB.Handlers.MessageDBHandler;
@@ -19,7 +20,16 @@ public class MessageHandler {
     public FeedMessageViewModel AddFeedMessage(String email, String message){
         FeedMessageEntity messageEntity = new FeedMessageEntity();
         messageEntity.setMessage(message);
-        //messageEntity.setAuthor(email); fix
+        UserEntity entity = new UserEntity();
+        entity.setEmail(email + "4");
+        entity.setPassword("kasper");
+        entity.setName("kasper");
+        entity.setLastName("linden");
+        entity.setUserName("kasper4");
+
+        messageEntity.setAuthor(entity);
+
+        //messageEntity.setEmail(email);
 
         return handler.addFeedMessage(messageEntity);
     }

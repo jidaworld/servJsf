@@ -21,12 +21,23 @@ public class MessageDBHandler implements IMessageHandler {
     }
 
     public FeedMessageViewModel addFeedMessage(FeedMessageEntity messageEntity) {
+
+        System.out.println(messageEntity.toString());
+
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(messageEntity);
+            em.flush();
+            FeedMessageViewModel m = new FeedMessageViewModel(
+                    messageEntity.getMessage(),
+                    messageEntity.getDate(),
+                    messageEntity.getAuthor().getName(),
+                    messageEntity.getAuthor().getLastName()
+            );
+            System.out.println(messageEntity.toString());
             em.getTransaction().commit();
-            // return new FeedMessageViewModel blabla
+             return m;
         } catch (Exception e) {
             em.getTransaction().rollback();
         } finally {
@@ -39,9 +50,10 @@ public class MessageDBHandler implements IMessageHandler {
     public List<FeedMessageViewModel> getFeedFromUser(String email) {
         EntityManager em = emf.createEntityManager();
         List<FeedMessageEntity> resultQuery = null;
-        try{
+        System.out.println("in msg DB");
+        try {
             TypedQuery<FeedMessageEntity> query = em.createNamedQuery("FeedMessageEntity.findByEmail", FeedMessageEntity.class);
-            query.setParameter(1, "%" + email + "%");
+            query.setParameter(1, email);
             resultQuery = query.getResultList();
             return FeedMessageConverter.convertToFMView(resultQuery);
         } catch (Exception e){
