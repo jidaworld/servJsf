@@ -2,16 +2,16 @@ package BusinessLayer.Handlers;
 
 import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
-import DataLayer.DB.DBHandler;
+import DataLayer.DB.Handlers.UserDBHandler;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.List;
 
 public class UserHandler {
 
-    private DBHandler dbHandler = null;
+    private UserDBHandler userDbHandler = null;
 
     public UserHandler(){
-        dbHandler = new DBHandler();
+        userDbHandler = new UserDBHandler();
     }
 
     public void addUser(String UserName, String Password, String Email, String Name, String LastName) {
@@ -26,11 +26,11 @@ public class UserHandler {
         user.setName(Name);
         user.setLastName(LastName);
 
-        dbHandler.addUser(user);
+        userDbHandler.addUser(user);
     }
 
     public List<UserViewModel> getUsers(String name){
-        return dbHandler.getUsers(name);
+        return userDbHandler.getUsers(name);
     }
 
 

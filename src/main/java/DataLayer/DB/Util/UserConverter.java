@@ -14,12 +14,12 @@ public class UserConverter {
 
     public static ArrayList<UserViewModel> convertToUserView(List<UserEntity> list){
         ArrayList<UserViewModel> returnList = new ArrayList<UserViewModel>();
-        for(int i = 0; i<list.size(); i++){
+        for (UserEntity u : list) {
             returnList.add(new UserViewModel(
-                    list.get(i).getUserName(),
-                    list.get(i).getEmail(),
-                    list.get(i).getName(),
-                    list.get(i).getLastName())
+                    u.getUserName(),
+                    u.getEmail(),
+                    u.getName(),
+                    u.getLastName())
             );
         }
         return returnList;

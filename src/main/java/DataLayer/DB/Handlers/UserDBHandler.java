@@ -1,7 +1,8 @@
-package DataLayer.DB;
+package DataLayer.DB.Handlers;
 
 import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
+import DataLayer.DB.IHandlers.IUserHandler;
 import DataLayer.DB.Util.UserConverter;
 
 import javax.persistence.EntityManager;
@@ -10,11 +11,11 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class DBHandler implements IDBHandler {
+public class UserDBHandler implements IUserHandler {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("TestPU");
 
-    public DBHandler(){
+    public UserDBHandler(){
 
     }
 
@@ -24,6 +25,7 @@ public class DBHandler implements IDBHandler {
             em.getTransaction().begin();
             em.persist(Users);
             em.getTransaction().commit();
+
         }catch(Exception e){
             em.getTransaction().rollback();
         }finally {

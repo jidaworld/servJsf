@@ -12,18 +12,17 @@ import java.util.List;
 
 @RestController
 public class GetUsersController {
-    private UserHandler userHandler;
+    private UserHandler userHandler = new UserHandler();
 
     @RequestMapping(value = "/getusers", method = RequestMethod.POST)
     public GetUserObjResponse getUsers(@Valid @RequestBody GetUsersObj obj){
-        userHandler = new UserHandler();
-        System.out.println("rest worked");
 
         return new GetUserObjResponse(userHandler.getUsers(obj.name));
     }
 
     private static class GetUsersObj{
         @JsonProperty
+        @NotEmpty
         private String name;
     }
 
