@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @RestController
-public class GetFeedController {
+public class GetFMController {
 
     private MessageHandler handler = new MessageHandler();
 
@@ -34,7 +34,7 @@ public class GetFeedController {
         @JsonProperty
         private List<FeedMessageViewModel> list;
 
-        public GetMessagesObjResponse(List<FeedMessageViewModel> list) {
+        GetMessagesObjResponse(List<FeedMessageViewModel> list) {
             this.list = list;
         }
     }

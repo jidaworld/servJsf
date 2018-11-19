@@ -1,8 +1,5 @@
 package BusinessLayer.Entities;
 
-
-import org.springframework.web.bind.annotation.Mapping;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -36,10 +33,6 @@ public class DirectMessageEntity {
 
     @PrePersist
     public void onCreate(){ Date = new Date(); }
-
-    public int getMessage_ID() {
-        return Message_ID;
-    }
 
     public String getMessage() {
         return Message;

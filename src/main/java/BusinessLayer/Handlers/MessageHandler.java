@@ -2,7 +2,6 @@ package BusinessLayer.Handlers;
 
 import BusinessLayer.Entities.DirectMessageEntity;
 import BusinessLayer.Entities.FeedMessageEntity;
-import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.DirectMessageViewModel;
 import BusinessLayer.ViewModels.FeedMessageViewModel;
 import DataLayer.DB.Handlers.MessageDBHandler;
@@ -11,7 +10,7 @@ import java.util.List;
 
 public class MessageHandler {
 
-    private MessageDBHandler handler = null;
+    private MessageDBHandler handler;
 
     public MessageHandler() {
         this.handler = new MessageDBHandler();

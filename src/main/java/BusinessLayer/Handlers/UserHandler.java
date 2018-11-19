@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UserHandler {
 
-    private UserDBHandler userDbHandler = null;
+    private UserDBHandler userDbHandler;
 
     public UserHandler(){
         userDbHandler = new UserDBHandler();

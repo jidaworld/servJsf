@@ -36,7 +36,7 @@ public class GetDMController {
         @JsonProperty
         private List<DirectMessageViewModel> list;
 
-        public GetMessageObjResponse(List<DirectMessageViewModel> list) {
+        GetMessageObjResponse(List<DirectMessageViewModel> list) {
             this.list = list;
         }
     }

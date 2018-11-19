@@ -30,7 +30,7 @@ public class GetUsersController {
         @JsonProperty
         private List<UserViewModel> list;
 
-        public GetUserObjResponse(List<UserViewModel> list) {
+        GetUserObjResponse(List<UserViewModel> list) {
             this.list = list;
         }
     }

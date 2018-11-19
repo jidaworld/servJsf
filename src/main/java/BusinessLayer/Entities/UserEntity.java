@@ -36,10 +36,6 @@ public class UserEntity {
         UserName = userName;
     }
 
-    public String getPassword() {
-        return Password;
-    }
-
     public void setPassword(String password) {
         Password = password;
     }

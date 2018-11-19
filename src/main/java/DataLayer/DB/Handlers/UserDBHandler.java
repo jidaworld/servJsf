@@ -35,7 +35,7 @@ public class UserDBHandler implements IUserHandler {
 
     public List<UserViewModel> getUsers(String name){
         EntityManager em = emf.createEntityManager();
-        List<UserEntity> resultQuery = null;
+        List<UserEntity> resultQuery;
         try{
             TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByName",UserEntity.class);
             query.setParameter(1, "%" + name + "%");

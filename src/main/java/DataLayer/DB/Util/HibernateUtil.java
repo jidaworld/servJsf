@@ -4,7 +4,7 @@ import org.hibernate.cfg.*;
 
 public class HibernateUtil {
 
-    private static SessionFactory sessionFactory = null;
+    private static SessionFactory sessionFactory;
     static{
         try{
             sessionFactory = new Configuration().configure().buildSessionFactory();

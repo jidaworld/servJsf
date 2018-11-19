@@ -22,7 +22,6 @@ public class DirectMessageConverter {
                     m.getReceiver().getEmail(),
                     m.getMessage(),
                     m.getDate()));
-
         }
         return returnList;
     }

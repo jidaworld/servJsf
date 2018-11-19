@@ -54,7 +54,7 @@ public class MessageDBHandler implements IMessageHandler {
 
     public List<FeedMessageViewModel> getFeedFromUser(String email) {
         EntityManager em = emf.createEntityManager();
-        List<FeedMessageEntity> resultQuery = null;
+        List<FeedMessageEntity> resultQuery;
         System.out.println("in msg DB");
         try {
             TypedQuery<FeedMessageEntity> query = em.createNamedQuery("FeedMessageEntity.findByEmail", FeedMessageEntity.class);
@@ -105,7 +105,7 @@ public class MessageDBHandler implements IMessageHandler {
 
     public List<DirectMessageViewModel> getDirectMessages(String userEmail_1, String userEmail_2) {
         EntityManager em = emf.createEntityManager();
-        List<DirectMessageEntity> resultQuery = null;
+        List<DirectMessageEntity> resultQuery;
         try{
             TypedQuery<DirectMessageEntity> query = em.createNamedQuery("DirectMessageEntity.findConversation", DirectMessageEntity.class);
             query.setParameter(1, userEmail_1);

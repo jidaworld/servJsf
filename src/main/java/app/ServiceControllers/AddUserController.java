@@ -13,11 +13,11 @@ import javax.validation.constraints.NotEmpty;
 
 @RestController
 public class AddUserController {
-    private UserHandler userHandler;
+    private UserHandler userHandler = new UserHandler();
 
     @RequestMapping (value = "/adduser", method = RequestMethod.POST)
     public void addUser(@Valid @RequestBody AddUserObj obj){
-        userHandler = new UserHandler();
+
         userHandler.addUser(obj.username, obj.password, obj.email, obj.name, obj.lastname);
     }
 

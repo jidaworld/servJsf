@@ -3,7 +3,6 @@ package DataLayer.DB.Util;
 import BusinessLayer.Entities.FeedMessageEntity;
 import BusinessLayer.ViewModels.FeedMessageViewModel;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +20,6 @@ public class FeedMessageConverter {
                     m.getDate(),
                     m.getAuthor().getName(),
                     m.getAuthor().getLastName()));
-                    //"kasper",
-                    //"linden"));
         }
         return returnList;
     }

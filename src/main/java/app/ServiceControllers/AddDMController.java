@@ -47,7 +47,7 @@ public class AddDMController {
         @JsonProperty
         private String receiverEmail;
 
-        public DirectMessageResponse(DirectMessageViewModel model) {
+        DirectMessageResponse(DirectMessageViewModel model) {
             this.message = model.getMessage();
             this.date = model.getDate();
             this.senderEmail = model.getSender();
