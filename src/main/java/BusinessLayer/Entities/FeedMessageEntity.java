@@ -17,7 +17,7 @@ public class FeedMessageEntity {
     @Column(nullable = false)
     private String Message;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Date Date;
 
@@ -28,10 +28,6 @@ public class FeedMessageEntity {
     @PrePersist
     protected void onCreate(){
         Date = new Date();
-    }
-
-    public int getMessage_ID() {
-        return Message_ID;
     }
 
     public String getMessage() {

@@ -1,5 +1,6 @@
 package BusinessLayer.ViewModels;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class FeedMessageViewModel {
@@ -20,9 +21,7 @@ public class FeedMessageViewModel {
         return message;
     }
 
-    public Date getDate() {
-        return date;
-    }
+    public Date getDate() { return date; }
 
     public String getName() {
         return name;

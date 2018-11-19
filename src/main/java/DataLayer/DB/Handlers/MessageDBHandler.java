@@ -2,9 +2,11 @@ package DataLayer.DB.Handlers;
 
 import BusinessLayer.Entities.DirectMessageEntity;
 import BusinessLayer.Entities.FeedMessageEntity;
+import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.DirectMessageViewModel;
 import BusinessLayer.ViewModels.FeedMessageViewModel;
 import DataLayer.DB.IHandlers.IMessageHandler;
+import DataLayer.DB.Util.DirectMessageConverter;
 import DataLayer.DB.Util.FeedMessageConverter;
 
 import javax.persistence.EntityManager;
@@ -20,13 +22,16 @@ public class MessageDBHandler implements IMessageHandler {
     public MessageDBHandler() {
     }
 
-    public FeedMessageViewModel addFeedMessage(FeedMessageEntity messageEntity) {
+    public FeedMessageViewModel addFeedMessage(FeedMessageEntity messageEntity, String email) {
 
-        System.out.println(messageEntity.toString());
-
+        UserEntity userEntity;
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
+            TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByEmail", UserEntity.class);
+            query.setParameter(1, email);
+            userEntity = query.getSingleResult();
+            messageEntity.setAuthor(userEntity);
             em.persist(messageEntity);
             em.flush();
             FeedMessageViewModel m = new FeedMessageViewModel(
@@ -65,13 +70,30 @@ public class MessageDBHandler implements IMessageHandler {
         return null;
     }
 
-    public DirectMessageViewModel addDirectMessage(DirectMessageEntity messageEntity) {
+    public DirectMessageViewModel addDirectMessage(DirectMessageEntity messageEntity, String senderEmail, String receiverEmail) {
+
+        UserEntity sender;
+        UserEntity receiver;
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
+            TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByEmail", UserEntity.class);
+            query.setParameter(1, senderEmail);
+            sender = query.getSingleResult();
+            query.setParameter(1, receiverEmail);
+            receiver = query.getSingleResult();
+            messageEntity.setSender(sender);
+            messageEntity.setReceiver(receiver);
             em.persist(messageEntity);
+            em.flush();
+            DirectMessageViewModel m = new DirectMessageViewModel(
+                    messageEntity.getSender().getEmail(),
+                    messageEntity.getReceiver().getEmail(),
+                    messageEntity.getMessage(),
+                    messageEntity.getDate()
+            );
             em.getTransaction().commit();
-            // return new FeedMessageViewModel ..
+            return m;
         } catch (Exception e){
             em.getTransaction().rollback();
         } finally {
@@ -81,7 +103,23 @@ public class MessageDBHandler implements IMessageHandler {
         return null;
     }
 
-    public List<DirectMessageViewModel> getDirectMessages(String user_1, String user_2) {
+    public List<DirectMessageViewModel> getDirectMessages(String userEmail_1, String userEmail_2) {
+        EntityManager em = emf.createEntityManager();
+        List<DirectMessageEntity> resultQuery = null;
+        try{
+            TypedQuery<DirectMessageEntity> query = em.createNamedQuery("DirectMessageEntity.findConversation", DirectMessageEntity.class);
+            query.setParameter(1, userEmail_1);
+            query.setParameter(2, userEmail_2);
+            query.setParameter(3, userEmail_2);
+            query.setParameter(4, userEmail_1);
+            resultQuery = query.getResultList();
+            return DirectMessageConverter.convertToDMView(resultQuery);
+        } catch (Exception e) {
+            System.out.println("Error getting DirectMessages in DB handler");
+        } finally {
+            em.close();
+        }
+
         return null;
     }
 

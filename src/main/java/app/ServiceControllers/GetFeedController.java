@@ -20,7 +20,6 @@ public class GetFeedController {
 
     @RequestMapping(value = "/getfeedmessages", method = RequestMethod.POST)
     public GetMessagesObjResponse getMessages(@Valid @RequestBody GetMessagesObj obj){
-        System.out.println("got in post " + obj.email);
         return new GetMessagesObjResponse(handler.GetFeedMessages(obj.email));
     }
 

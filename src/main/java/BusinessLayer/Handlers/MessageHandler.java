@@ -20,18 +20,8 @@ public class MessageHandler {
     public FeedMessageViewModel AddFeedMessage(String email, String message){
         FeedMessageEntity messageEntity = new FeedMessageEntity();
         messageEntity.setMessage(message);
-        UserEntity entity = new UserEntity();
-        entity.setEmail(email + "4");
-        entity.setPassword("kasper");
-        entity.setName("kasper");
-        entity.setLastName("linden");
-        entity.setUserName("kasper4");
 
-        messageEntity.setAuthor(entity);
-
-        //messageEntity.setEmail(email);
-
-        return handler.addFeedMessage(messageEntity);
+        return handler.addFeedMessage(messageEntity, email);
     }
 
     public List<FeedMessageViewModel> GetFeedMessages(String email){
@@ -41,13 +31,12 @@ public class MessageHandler {
 
     public DirectMessageViewModel AddDirectMessage(String senderEmail, String receiverEmail, String message){
         DirectMessageEntity messageEntity = new DirectMessageEntity();
+        messageEntity.setMessage(message);
 
-        // add stuff to messageEntity
-
-        return handler.addDirectMessage(messageEntity);
+        return handler.addDirectMessage(messageEntity, senderEmail, receiverEmail);
     }
 
-    public List<DirectMessageViewModel> GetConversation(String user_1, String user_2){
+    public List<DirectMessageViewModel> GetDirectMessage(String user_1, String user_2){
         return handler.getDirectMessages(user_1, user_2);
     }
 }

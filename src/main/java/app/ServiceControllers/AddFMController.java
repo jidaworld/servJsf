@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @RestController
@@ -20,7 +21,6 @@ public class AddFMController {
 
     @RequestMapping(value = "/writefeedmessage", method = RequestMethod.POST)
     public FeedMessageResponse AddFeedMessage(@Valid @RequestBody FeedMessageObj obj){
-        System.out.println(obj.message + " " + obj.email);
 
         return new FeedMessageResponse(handler.AddFeedMessage(obj.email, obj.message));
     }
