@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "FeedMessageEntity.findByEmail", query = "SELECT m FROM FeedMessageEntity m WHERE m.Users.Email = ?1")
+    @NamedQuery(name = "FeedMessageEntity.findByEmail", query = "SELECT m FROM FeedMessageEntity m WHERE m.Users.Email = ?1 ORDER BY m.Date DESC")
 })
 @Table(name = "FeedMessage")
 public class FeedMessageEntity {

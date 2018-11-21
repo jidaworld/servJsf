@@ -37,8 +37,8 @@ public class UserDBHandler implements IUserHandler {
         EntityManager em = emf.createEntityManager();
         List<UserEntity> resultQuery;
         try{
-            TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByName",UserEntity.class);
-            query.setParameter(1, "%" + name + "%");
+            TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findAllButMe",UserEntity.class);
+            query.setParameter(1, name);
             resultQuery = query.getResultList();
             return UserConverter.convertToUserView(resultQuery);
         } catch(Exception e){

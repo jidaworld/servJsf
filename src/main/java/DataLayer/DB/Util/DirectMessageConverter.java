@@ -18,8 +18,8 @@ public class DirectMessageConverter {
         ArrayList<DirectMessageViewModel> returnList = new ArrayList<DirectMessageViewModel>();
         for(DirectMessageEntity m : list){
             returnList.add(new DirectMessageViewModel(
-                    m.getSender().getEmail(),
-                    m.getReceiver().getEmail(),
+                    m.getSender().getName(),
+                    m.getReceiver().getName(),
                     m.getMessage(),
                     m.getDate()));
         }

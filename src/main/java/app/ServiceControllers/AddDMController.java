@@ -22,6 +22,7 @@ public class AddDMController {
 
     @RequestMapping(value = "/writedirectmessage", method = RequestMethod.POST)
     public DirectMessageResponse addDirectMessage(@Valid @RequestBody DirectMessageObject obj){
+        System.out.println(obj.message);
         return new DirectMessageResponse(handler.AddDirectMessage(obj.senderEmail, obj.receiverEmail, obj.message));
     }
 
@@ -43,15 +44,15 @@ public class AddDMController {
         @JsonProperty
         private Date date;
         @JsonProperty
-        private String senderEmail;
+        private String senderName;
         @JsonProperty
-        private String receiverEmail;
+        private String receiverName;
 
         DirectMessageResponse(DirectMessageViewModel model) {
             this.message = model.getMessage();
             this.date = model.getDate();
-            this.senderEmail = model.getSender();
-            this.receiverEmail = model.getReceiver();
+            this.senderName = model.getSender();
+            this.receiverName = model.getReceiver();
         }
     }
 

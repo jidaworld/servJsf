@@ -25,7 +25,6 @@ public class GetFMController {
 
     private static class GetMessagesObj{
         @JsonProperty
-        @NotEmpty
         private String email;
 
     }

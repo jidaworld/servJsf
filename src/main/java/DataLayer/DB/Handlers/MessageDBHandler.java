@@ -40,7 +40,6 @@ public class MessageDBHandler implements IMessageHandler {
                     messageEntity.getAuthor().getName(),
                     messageEntity.getAuthor().getLastName()
             );
-            System.out.println(messageEntity.toString());
             em.getTransaction().commit();
              return m;
         } catch (Exception e) {
@@ -55,7 +54,6 @@ public class MessageDBHandler implements IMessageHandler {
     public List<FeedMessageViewModel> getFeedFromUser(String email) {
         EntityManager em = emf.createEntityManager();
         List<FeedMessageEntity> resultQuery;
-        System.out.println("in msg DB");
         try {
             TypedQuery<FeedMessageEntity> query = em.createNamedQuery("FeedMessageEntity.findByEmail", FeedMessageEntity.class);
             query.setParameter(1, email);
@@ -87,8 +85,8 @@ public class MessageDBHandler implements IMessageHandler {
             em.persist(messageEntity);
             em.flush();
             DirectMessageViewModel m = new DirectMessageViewModel(
-                    messageEntity.getSender().getEmail(),
-                    messageEntity.getReceiver().getEmail(),
+                    messageEntity.getSender().getName(),
+                    messageEntity.getReceiver().getName(),
                     messageEntity.getMessage(),
                     messageEntity.getDate()
             );
