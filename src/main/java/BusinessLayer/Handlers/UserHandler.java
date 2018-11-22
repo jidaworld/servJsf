@@ -17,7 +17,6 @@ public class UserHandler {
     public void addUser(String UserName, String Password, String Email, String Name, String LastName) {
 
         UserEntity user = new UserEntity();
-        BCrypt crypto = new BCrypt();
         String hash = BCrypt.hashpw(Password, BCrypt.gensalt());
         user.setPassword(hash);
         user.setUserName(UserName);
@@ -31,6 +30,10 @@ public class UserHandler {
 
     public List<UserViewModel> getUsers(String name){
         return userDbHandler.getUsers(name);
+    }
+
+    public boolean Login(String username, String password) {
+        return userDbHandler.loginUser(username, password);
     }
 
 

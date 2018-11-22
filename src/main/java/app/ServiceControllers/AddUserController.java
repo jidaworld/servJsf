@@ -41,7 +41,6 @@ public class AddUserController {
         @Override
         public String toString() {
             return "AddUserObj{" +
-                    "username='" + username + '\'' +
                     ", password='" + password + '\'' +
                     ", email='" + email + '\'' +
                     ", name='" + name + '\'' +

@@ -4,6 +4,7 @@ import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
 import DataLayer.DB.IHandlers.IUserHandler;
 import DataLayer.DB.Util.UserConverter;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -48,5 +49,23 @@ public class UserDBHandler implements IUserHandler {
         }
 
         return null;
+    }
+
+    public boolean loginUser(String email, String password) {
+        EntityManager em = emf.createEntityManager();
+        UserEntity userEntity;
+        try {
+            TypedQuery<UserEntity> query = em.createNamedQuery("UserEntity.findByEmail", UserEntity.class);
+            query.setParameter(1, email);
+            userEntity = query.getSingleResult();
+            if(userEntity != null){
+                return BCrypt.checkpw(password, userEntity.getPassword());
+            }
+
+        } catch (Exception e) {
+            System.out.println("lagg");
+        }
+
+        return false;
     }
 }

@@ -12,4 +12,6 @@ public interface IUserHandler {
 
     List<UserViewModel> getUsers(String name) throws SQLException;
 
+    boolean loginUser(String username, String password);
+
 }

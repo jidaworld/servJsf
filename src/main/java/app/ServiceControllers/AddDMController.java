@@ -22,7 +22,6 @@ public class AddDMController {
 
     @RequestMapping(value = "/writedirectmessage", method = RequestMethod.POST)
     public DirectMessageResponse addDirectMessage(@Valid @RequestBody DirectMessageObject obj){
-        System.out.println(obj.message);
         return new DirectMessageResponse(handler.AddDirectMessage(obj.senderEmail, obj.receiverEmail, obj.message));
     }
 

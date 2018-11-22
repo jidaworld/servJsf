@@ -8,7 +8,8 @@ import javax.persistence.*;
         @NamedQuery(name = "UserEntity.findById", query = "SELECT u FROM UserEntity u WHERE u.id = ?1"),
         @NamedQuery(name = "UserEntity.findByName", query = "SELECT u FROM UserEntity u WHERE u.Name LIKE ?1"),
         @NamedQuery(name = "UserEntity.findByEmail", query = "SELECT u FROM UserEntity u WHERE u.Email = ?1"),
-        @NamedQuery(name = "UserEntity.findAllButMe", query = "SELECT u FROM UserEntity u WHERE u.Email != ?1")})
+        @NamedQuery(name = "UserEntity.findAllButMe", query = "SELECT u FROM UserEntity u WHERE u.Email != ?1"),
+        @NamedQuery(name = "UserEntity.findByUsername", query = "SELECT u FROM UserEntity u WHERE u.UserName = ?1")})
 @Table(name="Users")
 public class UserEntity {
 
@@ -63,6 +64,10 @@ public class UserEntity {
 
     public void setLastName(String lastName) {
         LastName = lastName;
+    }
+
+    public String getPassword() {
+        return Password;
     }
 
     @Override

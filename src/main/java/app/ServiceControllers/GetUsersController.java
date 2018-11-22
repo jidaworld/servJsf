@@ -22,7 +22,6 @@ public class GetUsersController {
 
     private static class GetUsersObj{
         @JsonProperty
-        @NotEmpty
         private String name;
     }
 
