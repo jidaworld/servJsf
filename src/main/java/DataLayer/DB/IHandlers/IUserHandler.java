@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface IUserHandler {
 
-    void addUser(UserEntity User) throws SQLException;
+    void addUser(UserEntity User);
 
-    List<UserViewModel> getUsers(String name) throws SQLException;
+    List<UserViewModel> getUsers(String name);
 
     boolean loginUser(String username, String password);
 

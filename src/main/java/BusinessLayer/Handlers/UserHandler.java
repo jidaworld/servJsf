@@ -4,6 +4,8 @@ import BusinessLayer.Entities.UserEntity;
 import BusinessLayer.ViewModels.UserViewModel;
 import DataLayer.DB.Handlers.UserDBHandler;
 import org.mindrot.jbcrypt.BCrypt;
+
+import javax.persistence.EntityExistsException;
 import java.util.List;
 
 public class UserHandler {
@@ -25,7 +27,12 @@ public class UserHandler {
         user.setName(Name);
         user.setLastName(LastName);
 
-        userDbHandler.addUser(user);
+        try {
+            userDbHandler.addUser(user);
+        } catch (EntityExistsException e){
+            throw e;
+        }
+
     }
 
     public List<UserViewModel> getUsers(String name){

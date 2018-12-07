@@ -21,7 +21,6 @@ public class AddFMController {
 
     @RequestMapping(value = "/writefeedmessage", method = RequestMethod.POST)
     public FeedMessageResponse AddFeedMessage(@Valid @RequestBody FeedMessageObj obj){
-
         return new FeedMessageResponse(handler.AddFeedMessage(obj.email, obj.message));
     }
 

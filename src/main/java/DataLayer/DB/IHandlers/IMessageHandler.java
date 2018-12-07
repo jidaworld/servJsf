@@ -14,9 +14,9 @@ public interface IMessageHandler {
 
     List<FeedMessageViewModel> getFeedFromUser(String email) throws SQLException;
 
-    DirectMessageViewModel addDirectMessage(DirectMessageEntity messageEntity, String senderEmail, String receiverEmail);
+    DirectMessageViewModel addDirectMessage(DirectMessageEntity messageEntity, String senderEmail, String receiverEmail) throws SQLException;
 
-    List<DirectMessageViewModel> getDirectMessages(String user_1, String user_2);
+    List<DirectMessageViewModel> getDirectMessages(String user_1, String user_2) throws SQLException;
 
 
 }
