@@ -21,6 +21,7 @@ public class UserDBHandler implements IUserHandler {
     }
 
     public void addUser(UserEntity Users) {
+
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -52,6 +53,9 @@ public class UserDBHandler implements IUserHandler {
     }
 
     public boolean loginUser(String email, String password) {
+        System.out.println("Email + Password: ");
+        System.out.println(email);
+        System.out.println(password);
         EntityManager em = emf.createEntityManager();
         UserEntity userEntity;
         try {
