@@ -17,7 +17,7 @@
             Johnochkasper1!
         </property>
         <property name="pool_size">
-            20
+            5
         </property>
         <!-- DB schema will be updated if needed -->
         <property name="hbm2ddl.auto">update</property>
