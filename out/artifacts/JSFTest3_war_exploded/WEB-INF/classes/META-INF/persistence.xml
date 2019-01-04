@@ -4,9 +4,8 @@
              version="2.0">
     <persistence-unit name="TestPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>BusinessLayer.Entities.UserEntity</class>
-        <class>BusinessLayer.Entities.FeedMessageEntity</class>
-        <class>BusinessLayer.Entities.DirectMessageEntity</class>
+        <class>com.example.businesslayer.entities.UserEntity</class>
+        <class>com.example.businesslayer.entities.DirectMessageEntity</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.connection.username" value="dbadmin"/>

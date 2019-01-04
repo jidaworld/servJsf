@@ -19,7 +19,7 @@
         <property name="pool_size">
             20
         </property>
-        <!-- DB schema will be updated if needed -->
+        <!-- db schema will be updated if needed -->
         <property name="hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>
